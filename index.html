@@ -3,225 +3,960 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikhil Kumar.com</title>
-    <link rel="stylesheet" href="style.css" class="css">
+    <title>Nikhil Kumar - Data Analyst Portfolio</title>
+    <meta name="description" content="Nikhil Kumar - Aspiring Data Analyst and Final-Year B.Tech Student in Mechanical Engineering at IIT Mandi. Explore my data analytics projects, skills in Python, SQL, Power BI, and more.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #000000;
+            color: #faf8f5;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        :root {
+            --primary-red: #ff004f;
+            --dark-gray: #222121;
+            --light-text: #faf8f5;
+        }
+        
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes bounceSubtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 79, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(255, 0, 79, 0.6); }
+        }
+        
+        @keyframes progressFill {
+            from { width: 0%; }
+            to { width: var(--progress-width); }
+        }
+        
+        .animate-fade-in { animation: fadeIn 0.6s ease-out; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out; }
+        .animate-slide-in-left { animation: slideInLeft 0.8s ease-out; }
+        .animate-slide-in-right { animation: slideInRight 0.8s ease-out; }
+        .animate-bounce-subtle { animation: bounceSubtle 2s infinite; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #ff004f, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .progress-bar {
+            animation: progressFill 2s ease-out forwards;
+        }
+        
+        .bg-primary-red { background-color: var(--primary-red); }
+        .text-primary-red { color: var(--primary-red); }
+        .border-primary-red { border-color: var(--primary-red); }
+        .bg-dark-gray { background-color: var(--dark-gray); }
+        .text-light-text { color: var(--light-text); }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        @media (max-width: 768px) {
+            .parallax-bg {
+                background-attachment: scroll;
+            }
+        }
+        
+        /* Tab content visibility */
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+        }
+        
+        .mobile-menu.show {
+            display: block;
+        }
+        
+        /* Intersection observer animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
+<body class="bg-black text-light-text">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-black bg-opacity-90 backdrop-blur-md">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <img src="images/logo.png" alt="Nikhil Kumar Logo" class="h-8 lg:h-12 w-auto">
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#header" class="nav-link text-light-text hover:text-primary-red transition-colors duration-300 relative group">
+                            Home
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-red transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#about" class="nav-link text-light-text hover:text-primary-red transition-colors duration-300 relative group">
+                            About
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-red transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#skills" class="nav-link text-light-text hover:text-primary-red transition-colors duration-300 relative group">
+                            Skills
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-red transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#projects" class="nav-link text-light-text hover:text-primary-red transition-colors duration-300 relative group">
+                            Projects
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-red transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#certificates" class="nav-link text-light-text hover:text-primary-red transition-colors duration-300 relative group">
+                            Certificates
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-red transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#contact" class="nav-link text-light-text hover:text-primary-red transition-colors duration-300 relative group">
+                            Contact
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-red transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </div>
+                </div>
 
-<body>
-    <div id="header">
-        <div class="container">
-            <nav>
-                <img src="images/logo.png" class="logo">
-                <ul>
-                    <li><a href="#header">Home</a></li>
-                    <li><a href="#about">About Me</a></li>
-                    <li><a href="#skill">Skills</a></li>
-                    <li><a href="#services">Projects</a></li>
-                    <li><a href="#portfolio">Certificates</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="header-text">
-                <p>Aspiring Data Analyst</p>
-                <h1>Hi, I'm <span>Nikhil Kumar</span><br> From India</h1>
-                <p class="info">Graduated with a B.Tech in Mechanical Engineering at<br>Indian Institute of Technology Mandi in May 2025</p>
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button type="button" id="mobile-menu-button" class="text-light-text hover:text-primary-red transition-colors duration-300">
+                        <i class="fas fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="mobile-menu lg:hidden animate-fade-in">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-dark-gray rounded-b-lg glass-effect border-t border-primary-red">
+                    <a href="#header" class="mobile-nav-link block w-full text-left px-3 py-2 text-base font-medium text-light-text hover:text-primary-red hover:bg-gray-700 rounded-lg transition-all duration-300 transform hover:scale-105">Home</a>
+                    <a href="#about" class="mobile-nav-link block w-full text-left px-3 py-2 text-base font-medium text-light-text hover:text-primary-red hover:bg-gray-700 rounded-lg transition-all duration-300 transform hover:scale-105">About</a>
+                    <a href="#skills" class="mobile-nav-link block w-full text-left px-3 py-2 text-base font-medium text-light-text hover:text-primary-red hover:bg-gray-700 rounded-lg transition-all duration-300 transform hover:scale-105">Skills</a>
+                    <a href="#projects" class="mobile-nav-link block w-full text-left px-3 py-2 text-base font-medium text-light-text hover:text-primary-red hover:bg-gray-700 rounded-lg transition-all duration-300 transform hover:scale-105">Projects</a>
+                    <a href="#certificates" class="mobile-nav-link block w-full text-left px-3 py-2 text-base font-medium text-light-text hover:text-primary-red hover:bg-gray-700 rounded-lg transition-all duration-300 transform hover:scale-105">Certificates</a>
+                    <a href="#contact" class="mobile-nav-link block w-full text-left px-3 py-2 text-base font-medium text-light-text hover:text-primary-red hover:bg-gray-700 rounded-lg transition-all duration-300 transform hover:scale-105">Contact</a>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- about section  -->
-    <div id="about">
-        <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <img src="images/user2.jpg">
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="header" class="relative min-h-screen flex items-center justify-center parallax-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('attached_assets/Home_1750489886210.png')">
+        <div class="container mx-auto px-4 lg:px-8 text-center fade-in-section">
+            <p class="text-base sm:text-lg lg:text-xl text-primary-red font-medium mb-4 animate-fade-in">
+                Aspiring Data Analyst
+            </p>
+            <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6">
+                Hi, I'm <span class="text-gradient animate-bounce-subtle">Nikhil Kumar</span><br />
+                <span class="text-xl sm:text-2xl lg:text-4xl font-normal">From India</span>
+            </h1>
+            <p class="text-sm sm:text-base lg:text-xl max-w-3xl mx-auto leading-relaxed font-light px-4">
+                Graduated with a B.Tech in Mechanical Engineering From<br class="hidden sm:block" />
+                <span class="font-semibold">Indian Institute of Technology Mandi in may 2025</span>
+            </p>
+            <div class="mt-8">
+                <button onclick="scrollToSection('#about')" class="inline-block bg-primary-red text-white px-8 py-3 rounded-full font-semibold hover:bg-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Explore My Journey
+                    <i class="fas fa-arrow-down ml-2"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-2xl text-primary-red"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 lg:py-24 bg-gray-900 fade-in-section">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+                <!-- Profile Image -->
+                <div class="lg:col-span-2">
+                    <img src="images/user3.jpg" alt="Nikhil Kumar - Data Analyst" class="w-full rounded-2xl shadow-2xl">
                 </div>
-                <div class="about-col-2">
-                    <h1 class="sub-title">About Me</h1>
-                    <div class="give">
-                    <h3 class="about-me-s">My Journey So Far</h3>
-                    <p> I’m a Mechanical Engineering graduate from IIT Mandi with a passion for both engineering design and data analytics. During my B.Tech, I explored a wide range of domains - CAD design, manufacturing, web development, and finally data analytics, which I found deeply exciting for its potential to uncover insights and drive decisions. I’m actively seeking opportunities in both Mechanical Engineering and Data Analytics roles—open to learning, contributing, and growing in either space.</p>
-
-                    <h3 class="about-me-s">Bridging My Technical Journey</h3>
-                    <p> My technical journey includes hands-on experience with Python (NumPy, Pandas, Matplotlib, Seaborn), SQL, Power BI, and Excel, which I use to clean, analyze, and visualize data. Additionally, my background in mechanical engineering equips me with a solid foundation in problem-solving and analytical thinking.</p>
-
-                    <h3 class="about-me-s">Enthusiastic About Data Science and AI</h3>
-                    <p> I am deeply enthusiastic about data science, machine learning, and artificial intelligence. The blend of logic, creativity, and problem-solving these fields require excites me and drives my ambition to grow as a data professional.</p>
-
-                    <h3 class="about-me-s">Combining Knowledge and Passion</h3>
-                    <p> Through various projects, I have honed my ability to translate complex datasets into actionable insights. My proficiency in programming, along with my mechanical engineering background, gives me a unique perspective to approach data-driven challenges effectively.</p>
-                    </div>
-                    </div>
-                    <div class="about-col-3" id="skill">
-
-                    <div class="tab-titles">
-                        <p class="tab-links active-links" onclick="opentab('Skills')">Skills</p>
-                        <p class="tab-links" onclick="opentab('Experience')">Experience</p>
-                        <p class="tab-links" onclick="opentab('Education')">Education</p>
-                    </div>
-                    <div class = "tab-contents active-tab" id="Skills">
-                        <div class="servicess-list">
-                        <ul>
-                            <li><span><h2>Data Analytics</h2></span><br>Data Analysis - SQL, Excel<br>
-                            Data Visualization - Power BI, Matplotlib, Seaborn<br>
-                            Data Manipulation - Python (NumPy, Pandas)<br>
-                            Statistical Analysis</li>
-                            <li><span><h2>Web development</h2></span><br>HTML, CSS, JavaScript</li>
-                            <li><span><h2>Computer Programming</h2></span><br>Python<br>
-                            C++<br>Data Structure & Algorithm</li>
-                            <li><span><h2>Mechanical Engineering</h2></span><br>Solidworks, NTopology, 3D Printing, Matlab<br>Core Concepts - Refrigeration & Air Conditioning, Mechanics of Solids, Theory of Machines, Design of Machine Elements</li>                           
-                        </ul>
+                
+                <!-- About Content -->
+                <div class="lg:col-span-3">
+                    <h2 class="text-2xl sm:text-3xl lg:text-5xl font-bold mb-8 text-gradient">About Me</h2>
+                    
+                    <div class="bg-dark-gray p-6 lg:p-8 rounded-2xl shadow-xl">
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-primary-red pl-4 lg:pl-6 hover:border-red-400 transition-all duration-300">
+                                <h3 class="text-lg lg:text-xl font-semibold text-primary-red mb-3">My Journey So Far</h3>
+                                <p class="text-gray-300 leading-relaxed text-sm lg:text-base">I’m a Mechanical Engineering graduate from IIT Mandi with a passion for both engineering design and data analytics. During my B.Tech, I explored a wide range of domains - CAD design, manufacturing, web development, and finally data analytics, which I found deeply exciting for its potential to uncover insights and drive decisions. I’m actively seeking opportunities in both Mechanical Engineering and Data Analytics roles—open to learning, contributing, and growing in either space.</p>
+                            </div>
+                            <div class="border-l-4 border-primary-red pl-4 lg:pl-6 hover:border-red-400 transition-all duration-300">
+                                <h3 class="text-lg lg:text-xl font-semibold text-primary-red mb-3">Bridging My Technical Journey</h3>
+                                <p class="text-gray-300 leading-relaxed text-sm lg:text-base">My technical journey includes hands-on experience with Python (NumPy, Pandas, Matplotlib, Seaborn), SQL, Power BI, and Excel, which I use to clean, analyze, and visualize data. Additionally, my background in mechanical engineering equips me with a solid foundation in problem-solving and analytical thinking.</p>
+                            </div>
+                            <div class="border-l-4 border-primary-red pl-4 lg:pl-6 hover:border-red-400 transition-all duration-300">
+                                <h3 class="text-lg lg:text-xl font-semibold text-primary-red mb-3">Enthusiastic About Data Science and AI</h3>
+                                <p class="text-gray-300 leading-relaxed text-sm lg:text-base">I am deeply enthusiastic about data science, machine learning, and artificial intelligence. The blend of logic, creativity, and problem-solving these fields require excites me and drives my ambition to grow as a data professional.</p>
+                            </div>
+                            <div class="border-l-4 border-primary-red pl-4 lg:pl-6 hover:border-red-400 transition-all duration-300">
+                                <h3 class="text-lg lg:text-xl font-semibold text-primary-red mb-3">Combining Knowledge and Passion</h3>
+                                <p class="text-gray-300 leading-relaxed text-sm lg:text-base">Through various projects, I have honed my ability to translate complex datasets into actionable insights. My proficiency in programming, along with my mechanical engineering background, gives me a unique perspective to approach data-driven challenges effectively.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="tab-contents" id="Experience">
-                        <div class="servicess-list">
-                        <ul>
-                            <li><span><h2>Public Relations Intern at Suvidha Foundation</h2></span><br>I have completed this internship from 6 dec'24 to 16 jan'25 and have performed these tasks : <br>- Drafted and managed partnership proposals for prestigious universities to establish collaborations with Suvidha
-Overseas, an initiative by Suvidha Foundation.<br>- Highlighted the organization's mentorship of over 100,000 interns annually, focusing on career growth,
-education guidance, and women empowerment.<br>- Facilitated communication with international admission teams to promote global education accessibility for
-Indian students.<br>- Strengthened Suvidha Overseas’ network by emphasizing benefits like a large, diverse student base and
-streamlined admission processes.
-                            </li>                          
-                        </ul>
-                    </div>
-                    </div>
-                    <div class="tab-contents" id="Education">
-                        <div class="servicess-list">
-                        <ul>
-                            <li><span><h2>B.Tech. Mechanical Engineering | Indian Institute of Technology, Mandi
-                            </h2></span><br>Aug 2021 - May 2025</li>
-                            <li><span><h2>Subhash Smarak Inter College, Saket Nagar , Kanpur Nagar</h2></span><br>Class XII - 80 % April 2021 , UP Board</li>
-                            <li><span><h2>Shivaji Inter College, Keshav Nagar, Kanpur Nagar</h2></span><br>Class X - 87 % April 2019, UP Board</li>                           
-                        </ul>
-                    </div>
-                </div>               
-            </div>
-        </div>
-    </div>
-    <!-- services -->
-    <div id="services">
-        <div class="container">
-            <h1 class="sub-title">My Projects</h1>
-                <div class="services-list">
-                <div>
-                    <h2>Credit Card Financial Dashboard : Power BI</h2>
-                    <p> Created an interactive dashboard leveraging transaction and customer data from a SQL database to
-                        deliver real-time insights. Provided actionable insights to stakeholders, enhancing data-driven decision-making processes.</p>
-                    <a href="https://github.com/nikhil999777/Credit_card_financial_dashboard.git">Learn more</a>
-                </div>
-                <div>
-                    <h2>Hand Gestures to Speech Convertor gloves for Dumb & Deaf people</h2>
-                    <p>Converts recognized gestures into speech by transmitting corresponding audio files to a speaker via the nRF24L01 module.
-                    </p>
-                    <a href="https://github.com/nikhil999777/ASL_to_speech_converter.git">Learn more</a>
-                </div>
-                <div>
-                    <h2>Portfolio Website</h2>
-                    <p> Designed and developed a responsive personal portfolio website using HTML, CSS, and JavaScript to showcase my skills,projects, and professional journey.</p>
-                    <a href="https://nikhil999777.github.io/my.portfolio.com/">Learn more</a>
                 </div>
             </div>
         </div>
-     </div>
-     <!-- resume -->
-        <div id="portfolio">
-        <div class="container">
-            <h1 class="sub-title">My Certificates</h1>
-            <div class="work-list">
-                <div class="work">
-                    <img src="images/powerbi.png">
-                    <div class="layer">
-                        <h3>Power BI Projects</h3>
-                        <p>I have an excellent experience of Power BI in data analytics, I have made a lot of dashboards.</p>
-                        <a href="#"><i>see</i></a>
-                    </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 lg:py-24 bg-black fade-in-section">
+        <div class="container mx-auto px-4 lg:px-8">
+            <!-- Tab Navigation -->
+            <div class="flex justify-center mb-12">
+                <div class="flex flex-wrap justify-center bg-dark-gray rounded-full p-2 gap-2 max-w-full">
+                    <button onclick="showTab('skills')" class="tab-btn px-4 lg:px-6 py-3 rounded-full font-semibold transition-all duration-300 text-sm lg:text-base whitespace-nowrap bg-primary-red text-white animate-pulse-glow">
+                        <i class="fas fa-code mr-1 lg:mr-2"></i>
+                        <span class="hidden sm:inline">Skills</span>
+                        <span class="sm:hidden">Skills</span>
+                    </button>
+                    <button onclick="showTab('experience')" class="tab-btn px-4 lg:px-6 py-3 rounded-full font-semibold transition-all duration-300 text-sm lg:text-base whitespace-nowrap text-gray-400 hover:text-white hover:bg-gray-700">
+                        <i class="fas fa-briefcase mr-1 lg:mr-2"></i>
+                        <span class="hidden sm:inline">Experience</span>
+                        <span class="sm:hidden">Exp</span>
+                    </button>
+                    <button onclick="showTab('education')" class="tab-btn px-4 lg:px-6 py-3 rounded-full font-semibold transition-all duration-300 text-sm lg:text-base whitespace-nowrap text-gray-400 hover:text-white hover:bg-gray-700">
+                        <i class="fas fa-graduation-cap mr-1 lg:mr-2"></i>
+                        <span class="hidden sm:inline">Education</span>
+                        <span class="sm:hidden">Edu</span>
+                    </button>
                 </div>
-                <div class="work">
-                    <img src="images/sql.png">
-                    <div class="layer">
-                        <h3>Database & SQL</h3>
-                        <p>I have an excellent experience of SQL database in data analytics, have done a lot of projects using it.</p>
-                        <a href="#"><i>see</i></a>
+            </div>
+
+            <!-- Skills Tab -->
+            <div id="skills-tab" class="tab-content active">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Technical Skills -->
+                    <div class="bg-dark-gray p-6 lg:p-8 rounded-2xl animate-slide-in-left">
+                        <h3 class="text-xl lg:text-2xl font-bold text-primary-red mb-6 flex items-center">
+                            <i class="fas fa-chart-line mr-3 animate-float"></i>
+                            Data Analytics
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-sm lg:text-base">Python (NumPy, Pandas)</span>
+                                    <span class="text-primary-red font-semibold">95%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2 lg:h-3 overflow-hidden">
+                                    <div class="skill-progress bg-gradient-to-r from-primary-red to-red-400 h-full rounded-full" data-width="95"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-sm lg:text-base">SQL & Database</span>
+                                    <span class="text-primary-red font-semibold">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2 lg:h-3 overflow-hidden">
+                                    <div class="skill-progress bg-gradient-to-r from-primary-red to-red-400 h-full rounded-full" data-width="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-sm lg:text-base">Data visualization (Power BI, Matplotlib, Seaborn)</span>
+                                    <span class="text-primary-red font-semibold">95%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2 lg:h-3 overflow-hidden">
+                                    <div class="skill-progress bg-gradient-to-r from-primary-red to-red-400 h-full rounded-full" data-width="95"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-sm lg:text-base">Excel & Statistical Analysis</span>
+                                    <span class="text-primary-red font-semibold">95%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2 lg:h-3 overflow-hidden">
+                                    <div class="skill-progress bg-gradient-to-r from-primary-red to-red-400 h-full rounded-full" data-width="95"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="work">
-                    <img src="images/excel.png">
-                    <div class="layer">
-                        <h3>Microsoft Excel for Data Analyst</h3>
-                        <p>I have an excellent experience of microsoft excel in data analytics.</p>
-                        <a href="#"><i>see</i></a>
-                    </div>
-                </div>
-                <div class="work">
-                    <img src="images/internship.jpg">
-                    <div class="layer">
-                        <h3>Public Relations internship</h3></h3>
-                        <p>I have an experience of public relations internship at Suvidha Foundation.</p>
-                        <a href="#"><i>see</i></a>
+
+                    <!-- Other Skills -->
+                    <div class="space-y-6 animate-slide-in-right">
+                        <div class="bg-dark-gray p-6 rounded-xl hover:bg-gray-800 transition-all duration-300 transform hover:scale-105">
+                            <h4 class="text-lg font-semibold text-primary-red mb-3 flex items-center">
+                                <i class="fas fa-globe mr-2"></i>
+                                Web Development
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">HTML</span>
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">CSS</span>
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="bg-dark-gray p-6 rounded-xl hover:bg-gray-800 transition-all duration-300 transform hover:scale-105">
+                            <h4 class="text-lg font-semibold text-primary-red mb-3 flex items-center">
+                                <i class="fas fa-laptop-code mr-2"></i>
+                                Programming
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">Python</span>
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">C++</span>
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">Data Structures</span>
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">Algorithms</span>
+                            </div>
+                        </div>
+                        <div class="bg-dark-gray p-6 rounded-xl hover:bg-gray-800 transition-all duration-300 transform hover:scale-105">
+                            <h4 class="text-lg font-semibold text-primary-red mb-3 flex items-center">
+                                <i class="fas fa-cogs mr-2"></i>
+                                Mechanical Engineering
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">SolidWorks</span>
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">NTopology</span>
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">3D Printing</span>
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">MATLAB</span>
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">Refrigeration & Air conditioning</span>
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">Mechanics of Soilds</span>
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">Theory of Machines</span>
+                                <span class="bg-gray-700 hover:bg-primary-red px-3 py-1 rounded-full text-sm transition-all duration-300 cursor-default">Design of Machine Elements</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <a href="#" class="btn">See more</a>
-        </div>
-      </div>
-      <!-- contact information -->
-       <div id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="contact-left">
-                    <h1 class="sub-title">Contact Me</h1>
-                    <p>Gmail : quantum11555@gmail.com</p>
-                    <div class="social-icons">
-                        <a href="https://www.linkedin.com/in/nikhil-kumar-966a39256/">Linkedin</a>
-                        <a href="https://github.com/nikhil999777">Github</a>
+
+            <!-- Experience Tab -->
+            <div id="experience-tab" class="tab-content">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-dark-gray p-6 lg:p-8 rounded-2xl hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 animate-slide-up">
+                        <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-primary-red rounded-full flex items-center justify-center animate-pulse-glow">
+                                    <i class="fas fa-briefcase text-white"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-lg lg:text-xl font-bold text-primary-red mb-2">Public Relations & Social Intern</h3>
+                                <p class="text-gray-400 mb-2 font-medium">SUVIDHA FOUNDATION</p>
+                                <p class="text-gray-300 leading-relaxed text-sm lg:text-base">Completed an internship focused on public relations and social initiatives, developing communication skills and understanding of community engagement strategies.</p>
+                            </div>
+                        </div>
                     </div>
-                    <a href="Nikhil Kumar-resume-D-A.pdf" download class="btn">Download CV</a>
                 </div>
-                <div class="contact-right">
-                    <form name="submit-to-google-sheet">
-                        <input type="text" name="Name" placeholder="Your Name*" required>
-                        <input type="email" name="Email" placeholder="Your Email*" required>
-                        <input type="number" name="Mobile no." placeholder="Mobile number">
-                        <textarea name="Message" rows="6" placeholder="Your Message*"></textarea>
-                        <button type="submit" class="btn btn2">Submit</button>
+            </div>
+
+            <!-- Education Tab -->
+            <div id="education-tab" class="tab-content">
+                <div class="max-w-4xl mx-auto space-y-6">
+                    <div class="bg-dark-gray p-6 lg:p-8 rounded-2xl hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 animate-slide-up">
+                        <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-primary-red animate-pulse-glow rounded-full flex items-center justify-center">
+                                    <i class="fas fa-university text-white"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-lg lg:text-xl font-bold text-primary-red mb-2">B.Tech. Mechanical Engineering</h3>
+                                <p class="text-gray-400 mb-2 font-medium text-sm lg:text-base">Indian Institute of Technology, Mandi</p>
+                                <p class="text-gray-500 text-xs lg:text-sm">Aug 2021 - May 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-dark-gray p-6 lg:p-8 rounded-2xl hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 animate-slide-up">
+                        <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-school text-white"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-lg lg:text-xl font-bold text-white mb-2">Class XII</h3>
+                                <p class="text-gray-400 mb-2 font-medium text-sm lg:text-base">Subhash Smarak Inter College, Saket Nagar, Kanpur Nagar</p>
+                                <p class="text-gray-500 text-xs lg:text-sm">80% - April 2021, UP Board</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-dark-gray p-6 lg:p-8 rounded-2xl hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 animate-slide-up">
+                        <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-school text-white"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-lg lg:text-xl font-bold text-white mb-2">Class X</h3>
+                                <p class="text-gray-400 mb-2 font-medium text-sm lg:text-base">Shivaji Inter College, Keshav Nagar, Kanpur Nagar</p>
+                                <p class="text-gray-500 text-xs lg:text-sm">87% - April 2019, UP Board</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 lg:py-24 bg-gray-900 fade-in-section">
+        <div class="container mx-auto px-4 lg:px-8">
+            <h2 class="text-3xl lg:text-5xl font-bold text-center mb-12 text-primary-red">My Projects</h2>
+            
+            <!-- Project Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="filterProjects('all')" class="filter-btn px-6 py-2 rounded-full font-medium transition-all duration-300 bg-primary-red text-white">All Projects</button>
+                <button onclick="filterProjects('data')" class="filter-btn px-6 py-2 rounded-full font-medium transition-all duration-300 bg-dark-gray text-light-text hover:bg-primary-red hover:text-white">Data Analytics</button>
+                <button onclick="filterProjects('hardware')" class="filter-btn px-6 py-2 rounded-full font-medium transition-all duration-300 bg-dark-gray text-light-text hover:bg-primary-red hover:text-white">Hardware</button>
+                <button onclick="filterProjects('web')" class="filter-btn px-6 py-2 rounded-full font-medium transition-all duration-300 bg-dark-gray text-light-text hover:bg-primary-red hover:text-white">Web Development</button>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
+                <div class="project-item bg-dark-gray rounded-2xl overflow-hidden shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-category="data">
+                    <div class="relative overflow-hidden">
+                        <img src="images/powerbi_dashboard.png" alt="Credit Card Financial Dashboard" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-primary-red text-white px-3 py-1 rounded-full text-sm font-medium">Data Analytics</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary-red">Credit Card Financial Dashboard</h3>
+                        <p class="text-gray-300 mb-4 leading-relaxed">Created an interactive dashboard leveraging transaction and customer data from a SQL database to deliver real-time insights. Provided actionable insights to stakeholders, enhancing data-driven decision-making processes.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">Power BI</span>
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">SQL</span>
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">Data Visualization</span>
+                        </div>
+                        <a href="https://github.com/nikhil999777/Credit_card_financial_dashboard.git" target="_blank" class="inline-flex items-center text-primary-red hover:text-red-300 transition-colors duration-300">
+                            <i class="fab fa-github mr-2"></i>View Project<i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-item bg-dark-gray rounded-2xl overflow-hidden shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-category="hardware">
+                    <div class="relative overflow-hidden">
+                        <img src="images/gloves.png" alt="Hand Gesture to Speech Converter" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Hardware</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary-red">Hand Gesture to Speech Converter</h3>
+                        <p class="text-gray-300 mb-4 leading-relaxed">Innovative gloves for mute and blind people that convert recognized gestures into speech by transmitting corresponding audio files to a speaker via the nRF24L01 module.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">Arduino Nano</span>
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">nRF24L01</span>
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">Flex Sensors</span>
+                        </div>
+                        <a href="https://github.com/nikhil999777/ASL_to_speech_converter.git" class="inline-flex items-center text-primary-red hover:text-red-300 transition-colors duration-300">
+                            <i class="fab fa-github mr-2"></i>Learn More<i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-item bg-dark-gray rounded-2xl overflow-hidden shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-category="web">
+                    <div class="relative overflow-hidden">
+                        <img src="images/work-2.png" alt="Portfolio Website" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">Web Dev</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary-red">Portfolio Website</h3>
+                        <p class="text-gray-300 mb-4 leading-relaxed">Designed and developed a responsive personal portfolio website using HTML, CSS, and JavaScript to showcase my skills, projects, and professional journey.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">HTML</span>
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">CSS</span>
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">JavaScript</span>
+                        </div>
+                        <a href="https://nikhil999777.github.io/my.portfolio.com/" target="_blank" class="inline-flex items-center text-primary-red hover:text-red-300 transition-colors duration-300">
+                            <i class="fab fa-github mr-2"></i>View Project<i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-16 lg:py-24 bg-black fade-in-section">
+        <div class="container mx-auto px-4 lg:px-8">
+            <h2 class="text-3xl lg:text-5xl font-bold text-center mb-12 text-primary-red">My Certificates</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group relative bg-dark-gray rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+                    <img src="images/powerbi.png" alt="Power BI Certificate" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-center w-full">
+                            <h3 class="text-lg font-bold text-white mb-2">Power BI Projects</h3>
+                            <p class="text-gray-200 text-sm mb-4">Excellent experience in Power BI data analytics with multiple dashboard projects.</p>
+                            <button class="bg-primary-red text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-red-600 transition-colors">
+                                <i class="fas fa-eye mr-2"></i>View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative bg-dark-gray rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+                    <img src="images/sql.png" alt="SQL Database Certificate" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-center w-full">
+                            <h3 class="text-lg font-bold text-white mb-2">Database & SQL</h3>
+                            <p class="text-gray-200 text-sm mb-4">Extensive experience in SQL database management and data analytics projects.</p>
+                            <button class="bg-primary-red text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-red-600 transition-colors">
+                                <i class="fas fa-eye mr-2"></i>View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative bg-dark-gray rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+                    <img src="images/excel.png" alt="Excel Data Analysis Certificate" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-center w-full">
+                            <h3 class="text-lg font-bold text-white mb-2">Excel for Data Analysts</h3>
+                            <p class="text-gray-200 text-sm mb-4">Advanced Microsoft Excel skills for comprehensive data analysis.</p>
+                            <button class="bg-primary-red text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-red-600 transition-colors">
+                                <i class="fas fa-eye mr-2"></i>View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative bg-dark-gray rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+                    <img src="images/internship.jpg" alt="Public Relations Internship Certificate" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-center w-full">
+                            <h3 class="text-lg font-bold text-white mb-2">Public Relations</h3>
+                            <p class="text-gray-200 text-sm mb-4">Internship experience in public relations at Suvidha Foundation.</p>
+                            <button class="bg-primary-red text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-red-600 transition-colors">
+                                <i class="fas fa-eye mr-2"></i>View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-transparent border-2 border-primary-red text-primary-red px-8 py-3 rounded-full font-semibold hover:bg-primary-red hover:text-white transition-all duration-300">
+                    <i class="fas fa-plus mr-2"></i>See More Certificates
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 lg:py-24 bg-gray-900 fade-in-section">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <!-- Contact Information -->
+                <div>
+                    <h2 class="text-3xl lg:text-5xl font-bold mb-8 text-primary-red">Contact Me</h2>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-red rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Email</p>
+                                <p class="text-light-text font-medium">nikhilvermank123@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-red rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Location</p>
+                                <p class="text-light-text font-medium">Kanpur Nagar, Uttar Pradesh, India</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="space-y-4 mb-8">
+                        <h3 class="text-xl font-semibold text-primary-red">Connect With Me</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://www.linkedin.com/in/nikhil-kumar-966a39256/" target="_blank" class="flex items-center space-x-3 bg-dark-gray p-4 rounded-xl hover:bg-blue-600 transition-all duration-300 group">
+                                <i class="fab fa-linkedin text-2xl text-blue-500 group-hover:text-white"></i>
+                                <span class="text-light-text group-hover:text-white">LinkedIn</span>
+                            </a>
+                            <a href="https://github.com/nikhil999777" target="_blank" class="flex items-center space-x-3 bg-dark-gray p-4 rounded-xl hover:bg-gray-800 transition-all duration-300 group">
+                                <i class="fab fa-github text-2xl text-gray-400 group-hover:text-white"></i>
+                                <span class="text-light-text group-hover:text-white">GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Download CV Button -->
+                    <a href="images/my-cv.pdf" download class="inline-flex items-center bg-primary-red text-white px-8 py-4 rounded-full font-semibold hover:bg-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-download mr-3"></i>Download CV
+                    </a>
+                </div>
+
+                <!-- Contact Form -->
+                <div>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Your Name *</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-dark-gray border border-gray-600 rounded-xl text-light-text placeholder-gray-500 focus:border-primary-red focus:ring-1 focus:ring-primary-red transition-all duration-300" placeholder="John Doe">
+                                <span class="error-message text-red-400 text-sm mt-1 hidden"></span>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Your Email *</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-dark-gray border border-gray-600 rounded-xl text-light-text placeholder-gray-500 focus:border-primary-red focus:ring-1 focus:ring-primary-red transition-all duration-300" placeholder="john@example.com">
+                                <span class="error-message text-red-400 text-sm mt-1 hidden"></span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="mobile" class="block text-sm font-medium text-gray-400 mb-2">Mobile Number</label>
+                            <input type="tel" id="mobile" name="mobile" class="w-full px-4 py-3 bg-dark-gray border border-gray-600 rounded-xl text-light-text placeholder-gray-500 focus:border-primary-red focus:ring-1 focus:ring-primary-red transition-all duration-300" placeholder="+91 9876543210">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Your Message *</label>
+                            <textarea id="message" name="message" rows="6" required class="w-full px-4 py-3 bg-dark-gray border border-gray-600 rounded-xl text-light-text placeholder-gray-500 focus:border-primary-red focus:ring-1 focus:ring-primary-red transition-all duration-300 resize-none" placeholder="Tell me about your project or just say hello..."></textarea>
+                            <span class="error-message text-red-400 text-sm mt-1 hidden"></span>
+                        </div>
+                        
+                        <button type="submit" id="submit-btn" class="w-full bg-primary-red text-white py-4 rounded-xl font-semibold hover:bg-red-600 transition-all duration-300 transform hover:scale-105">
+                            Send Message
+                        </button>
+                        
+                        <div id="form-message" class="text-center p-4 rounded-lg hidden"></div>
                     </form>
-                    <span id="msg"></span>
                 </div>
             </div>
         </div>
-        <div class="copyright"><p>Copyright &copy; Nikhil. My Website @ All rights reserved</p></div>
-       </div>
+        
+        <!-- Copyright -->
+        <div class="border-t border-gray-700 mt-16 pt-8">
+            <div class="container mx-auto px-4 lg:px-8">
+                <p class="text-center text-gray-500">
+                    Copyright © 2025 Nikhil Kumar. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary-red text-white rounded-full shadow-lg transition-all duration-300 hover:bg-red-600 z-40 opacity-0 invisible">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <script>
-        var tablinks = document.getElementsByClassName("tab-links");
-        var tabcontents = document.getElementsByClassName("tab-contents");
-        function opentab(tabname){
-        for(tablink of tablinks){
-        tablink.classList.remove("active-links");
-        }
-        for(tabcontent of tabcontents){
-        tabcontent.classList.remove("active-tab");
-        }
-        event.currentTarget.classList.add("active-link");
-        document.getElementById(tabname).classList.add("active-tab");
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        let isMobileMenuOpen = false;
+
+        mobileMenuButton.addEventListener('click', () => {
+            isMobileMenuOpen = !isMobileMenuOpen;
+            if (isMobileMenuOpen) {
+                mobileMenu.classList.add('show');
+                menuIcon.className = 'fas fa-times text-xl';
+            } else {
+                mobileMenu.classList.remove('show');
+                menuIcon.className = 'fas fa-bars text-xl';
+            }
+        });
+
+        // Close mobile menu when clicking nav links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('show');
+                menuIcon.className = 'fas fa-bars text-xl';
+                isMobileMenuOpen = false;
+            });
+        });
+
+        // Smooth scroll function
+        function scrollToSection(target) {
+            document.querySelector(target).scrollIntoView({
+                behavior: 'smooth'
+            });
         }
 
+        // Navigation smooth scroll
+        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = link.getAttribute('href');
+                scrollToSection(target);
+            });
+        });
+
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                scrollToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.add('active');
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-primary-red', 'text-white', 'animate-pulse-glow');
+                btn.classList.add('text-gray-400', 'hover:text-white', 'hover:bg-gray-700');
+            });
+            
+            event.target.classList.remove('text-gray-400', 'hover:text-white', 'hover:bg-gray-700');
+            event.target.classList.add('bg-primary-red', 'text-white', 'animate-pulse-glow');
+            
+            // Animate skill progress bars if skills tab is selected
+            if (tabName === 'skills') {
+                setTimeout(() => {
+                    animateSkillBars();
+                }, 300);
+            }
+        }
+
+        // Animate skill progress bars
+        function animateSkillBars() {
+            document.querySelectorAll('.skill-progress').forEach((bar, index) => {
+                const width = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = width + '%';
+                }, index * 200);
+            });
+        }
+
+        // Project filtering
+        function filterProjects(category) {
+            const projects = document.querySelectorAll('.project-item');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // Update filter buttons
+            filterBtns.forEach(btn => {
+                btn.classList.remove('bg-primary-red', 'text-white');
+                btn.classList.add('bg-dark-gray', 'text-light-text', 'hover:bg-primary-red', 'hover:text-white');
+            });
+            
+            event.target.classList.remove('bg-dark-gray', 'text-light-text', 'hover:bg-primary-red', 'hover:text-white');
+            event.target.classList.add('bg-primary-red', 'text-white');
+            
+            // Filter projects
+            projects.forEach(project => {
+                if (category === 'all' || project.getAttribute('data-category') === category) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+
+        // Contact form handling
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const formMessage = document.getElementById('form-message');
+            const form = e.target;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(msg => {
+                msg.classList.add('hidden');
+            });
+            
+            // Validate form
+            const name = form.name.value.trim();
+            const email = form.email.value.trim();
+            const message = form.message.value.trim();
+            
+            let hasErrors = false;
+            
+            if (!name) {
+                showError('name', 'Name is required');
+                hasErrors = true;
+            }
+            
+            if (!email) {
+                showError('email', 'Email is required');
+                hasErrors = true;
+            } else if (!isValidEmail(email)) {
+                showError('email', 'Please enter a valid email address');
+                hasErrors = true;
+            }
+            
+            if (!message) {
+                showError('message', 'Message is required');
+                hasErrors = true;
+            }
+            
+            if (hasErrors) return;
+            
+            // Simulate form submission
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                formMessage.textContent = "Message sent successfully! I'll get back to you soon.";
+                formMessage.classList.remove('hidden', 'text-red-500', 'bg-red-500/10');
+                formMessage.classList.add('text-green-500', 'bg-green-500/10');
+                
+                form.reset();
+                
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 5000);
+                
+            } catch (error) {
+                formMessage.textContent = 'Something went wrong. Please try again.';
+                formMessage.classList.remove('hidden', 'text-green-500', 'bg-green-500/10');
+                formMessage.classList.add('text-red-500', 'bg-red-500/10');
+            } finally {
+                submitBtn.innerHTML = 'Send Message';
+                submitBtn.disabled = false;
+            }
+        });
+
+        function showError(fieldName, message) {
+            const field = document.getElementById(fieldName);
+            const errorMsg = field.parentNode.querySelector('.error-message');
+            errorMsg.textContent = message;
+            errorMsg.classList.remove('hidden');
+            field.classList.add('border-red-500');
+        }
+
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Clear error on input
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('input', () => {
+                const errorMsg = input.parentNode.querySelector('.error-message');
+                if (errorMsg && !errorMsg.classList.contains('hidden')) {
+                    errorMsg.classList.add('hidden');
+                    input.classList.remove('border-red-500');
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in sections
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initialize skill bars animation on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                animateSkillBars();
+            }, 1000);
+        });
     </script>
-    <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbx0-T9J2jhdZ_yqWK1sQbDjUgD1uACW3qNqyoCzfrTTd9GqYVK8DHvJNx4DVZzZhnw/exec'
-        const form = document.forms['submit-to-google-sheet']
-        const msg = document.getElementById("msg")
-      
-        form.addEventListener('submit', e => {
-          e.preventDefault()
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                msg.innerHTML = "Message sent successfully"
-                setTimeout(function(){
-                    msg.innerHTML = ""
-                },4000)
-                form.reset()
-            })
-            .catch(error => console.error('Error!', error.message))
-        })
-      </script>
 </body>
 </html>
